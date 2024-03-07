@@ -1,0 +1,19 @@
+//sieve generate:
+bool seive[1010000];
+vector<int>prime;
+void seivegen( int limit) {
+    limit += 100;
+    int sqrtn = sqrt(limit);
+    for(int i = 3; i <= sqrtn; i += 2) {
+            if(!seive[i>>1]) {
+                    for(int j = i * i; j < limit; j += i + i) {
+                            seive[j>>1] = 1;
+                    }
+            }
+    }
+
+    prime.pb(2);
+    for(int i = 3; i < limit; i += 2) {
+            if(!seive[i>>1]) prime.pb(i);
+    }
+}
