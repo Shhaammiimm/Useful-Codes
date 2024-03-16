@@ -1,0 +1,21 @@
+//the number of subsegments with negative product and the number of subsegments with positive product
+  ll n;
+  cin>>n;
+  vector<ll>v(n),a;
+  for(int i=0;i<n;i++){
+    cin>>v[i];
+  }
+  ll pos=1,neg=0;
+  for(int i=0;i<n;i++){
+    if(v[i]<0)v[i]=-1;
+    else v[i]=1;
+
+    if(i>0)v[i]*=v[i-1];
+
+    if(v[i]==1)pos++;
+    else neg++;
+  }
+  ll total=n*(n+1)/2;
+  ll neg_product=pos*neg;
+  ll pos_product=total-neg_product;
+  cout<<neg_product<<" "<<pos_product<<nl;
