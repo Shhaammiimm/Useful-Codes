@@ -39,7 +39,7 @@ int fact[N];
 int invfact[N];
 int inv[N];
  
-void init()
+void init() //must initialize first(everytime i forget)
 {
     fact[0]=1;
     invfact[0] = 1;
