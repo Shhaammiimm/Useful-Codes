@@ -1,0 +1,23 @@
+vector<int>top_sort(vector<int>adj[],int n){
+	    vector<int>indegree(n,0);
+	    vector<int>ans;
+	    for(int i=0;i<n;i++){
+	        for(auto  u: adj[i]){
+	            indegree[u]++;
+	        }
+	    }
+	    queue<int>q;
+	    for(int i=0;i<n;i++){
+	        if(indegree[i]==0)q.push(i);
+	    }
+	    while(!q.empty()){
+	        int v=q.front();
+	        q.pop();
+	        ans.push_back(v);
+	        for(auto u:adj[v]){
+	            indegree[u]--;
+	            if(indegree[u]==0)q.push(u);
+	        }
+	    }
+	    return ans;//change return type according to the problem
+}
